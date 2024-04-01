@@ -1,0 +1,53 @@
+/* Ex 03 - Faça um algoritmo que receba a idade, altura e peso de 10 pessoas. Calcule e mostre:
+a) a quantidade de pessoas com idade superior a 50 anos;
+b) a média das alturas das pessoas com idade entre 10 e 20 anos;
+c) a porcentagem de pessoas com peso inferior a 40 quilos entre todas as pessoas.
+*/
+
+import java.util.Scanner;
+
+public class MediaPessoas {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int pessoasAcimaDe50 = 0;
+        double somaAlturas = 0;
+        int contadorPessoas10a20 = 0;
+        int contadorPessoas = 0;
+        int pessoasComPesoInferior40 = 0;
+
+        for (int i = 1; i <= 10; i++) {
+            System.out.println("Pessoa " + i + ":");
+            System.out.print("Idade: ");
+            int idade = scanner.nextInt();
+            System.out.print("Altura (em metros): ");
+            double altura = scanner.nextDouble();
+            System.out.print("Peso (em quilos): ");
+            double peso = scanner.nextDouble();
+
+            if (idade > 50) {
+                pessoasAcimaDe50++;
+            }
+
+            if (idade >= 10 && idade <= 20) {
+                somaAlturas += altura;
+                contadorPessoas10a20++;
+            }
+
+            if (peso < 40) {
+                pessoasComPesoInferior40++;
+            }
+
+            contadorPessoas++;
+        }
+
+        double mediaAlturas10a20 = contadorPessoas10a20 > 0 ? somaAlturas / contadorPessoas10a20 : 0;
+        double percentualPesoInferior40 = (double) pessoasComPesoInferior40 / contadorPessoas * 100;
+
+        System.out.println("a) Quantidade de pessoas com idade superior a 50 anos: " + pessoasAcimaDe50);
+        System.out.println("b) Média das alturas das pessoas com idade entre 10 e 20 anos: " + mediaAlturas10a20 + " metros");
+        System.out.println("c) Porcentagem de pessoas com peso inferior a 40 quilos entre todas as pessoas: " + percentualPesoInferior40 + "%");
+
+        scanner.close();
+    }
+}
+
